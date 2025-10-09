@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
 
-## Project info
 
-**URL**: https://lovable.dev/projects/4cb36ac6-bd03-48ca-9d11-2290136f83df
+```markdown
+# 2nd Brain Web App
 
-## How can I edit this code?
+## Overview
+The 2nd Brain web app is an AI-powered personal knowledge management system that allows users to upload, organize, and semantically search notes and PDF documents using embeddings and natural language AI models. It enables effortless retrieval of information through advanced search and NLP capabilities.
 
-There are several ways of editing your application.
+## Features
+- Upload and manage text notes
+- Upload multiple PDF documents with text extraction
+- Semantic similarity search using Sentence Transformers embeddings
+- AI-powered question answering, sentiment analysis, and chatbot features (backend)
+- Text-to-Speech and Translator integration via Azure Cognitive Services
+- React-based frontend with intuitive UI for uploading and searching content
 
-**Use Lovable**
+## Tech Stack
+- **Backend:** FastAPI, Python, Sentence Transformers, PyMuPDF, Azure Cognitive Services
+- **Frontend:** React (Vite), TypeScript, Tailwind CSS
+- **Database:** SupaBase for persistent storage and indexing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4cb36ac6-bd03-48ca-9d11-2290136f83df) and start prompting.
+## Setup and Usage
 
-Changes made via Lovable will be committed automatically to this repo.
+### Backend
+1. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   pip install sentence-transformers pymupdf numpy
+   ```
+2. Run the backend server:
+   ```
+   uvicorn app:app --reload --host 0.0.0.0 --port 8000
+   ```
 
-**Use your preferred IDE**
+### Frontend
+1. Install dependencies:
+   ```
+   npm install
+   ```
+2. Run the frontend server:
+   ```
+   npm run dev
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## API Endpoints
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `POST /upload/note`: Upload a text note (title & content)
+- `POST /upload/pdfs`: Upload one or more PDF files
+- `POST /search`: Search stored notes and PDFs by semantic similarity
+- Additional endpoints for AI tasks like `/nn/qa`, `/nn/sentiment`, `/chatbot`, and Azure integrations
 
-Follow these steps:
+## Project Structure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```
+backend/
+  ├── app.py                 # Main FastAPI backend application
+  ├── upload_search.py       # Upload and search endpoints code
+  ├── models/                # AI model files
+  ├── notes_store/           # Uploaded note text files
+  └── pdf_store/             # Uploaded PDF files
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+frontend/
+  ├── src/                   # React source code
+  ├── public/
+  ├── .env
+  ├── package.json
+  └── vite.config.ts
 ```
 
-**Edit a file directly in GitHub**
+## Contribution
+Feel free to open issues or pull requests for improvements and bug fixes.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4cb36ac6-bd03-48ca-9d11-2290136f83df) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```
